@@ -37,5 +37,12 @@ Opened AD Users and Computers and created the Organizational Units: Users, Compu
 ![](images/image7.png)
 
 ## Join Client PC to Domain and Test Login
+Joined the device to the local active directory network: campbell.local. Restarted client machine and selected other user on login. Enter the user's username and password to successfully login.
+
+![](images/image9.png)
+![](images/image10.png)
+![](images/image12.png)
+
+## Group Policy Creation
 
 
