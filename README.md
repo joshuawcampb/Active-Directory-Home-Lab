@@ -12,7 +12,7 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 - Performed troubleshooting using tools such as gpupdate, gpresult, ping, ipconfig, nslookup.
 
 ## Setup
-Performed a setup and installation of Windows Server. This required cleaning the disk to free up space which allowed Windows Server to install
+Performed a setup of VMs and installation of Windows Server and Windows 11 clients. For the server, this required cleaning the disk to free up space which allowed Windows Server to install
 
 ![](images/image40.png)
 ![](images/image.png)
