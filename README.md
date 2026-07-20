@@ -27,5 +27,15 @@ Configured the server and client VM network settings to enable a second adapter 
 Installed Active Directory Domain Services and DNS Server. Promoted the server to a domain controller and gave it the domain name: campbell.local.
 
 ![](images/image39.png)
+![](images/image2.png)
 
 ## OU, User Account, and Security Group Creation
+Opened AD Users and Computers and created the Organizational Units: Users, Computers, IT, HR, and Sales. Selected the Users OU and entered example users, inputting their full name, username, and default password to be changed upon first login. Selected the IT OU and created several security groups: IT Admins, Help Desk, Managers, Employees. Added a user to the Help Desk group.
+
+![](images/image4.png)
+![](images/image6.png)
+![](images/image7.png)
+
+## Join Client PC to Domain and Test Login
+
+
