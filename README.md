@@ -18,7 +18,7 @@ Performed a setup of VMs and installation of Windows Server and Windows 11 clien
 ![](images/image.png)
 
 ## Network Setup
-Configured the server and client VM network settings to enable a second adapter for an internal network. Configured the server network configuration to set the static ip address: 192.168.10.10. The server and client machines were both configured to have the DNS point to the server ip.
+Configured the server and client VM network settings to enable a second adapter for an internal network. Configured the server network configuration to set the static ip address: 192.168.10.10. The client machine ip address was set to 192.168.10.20 to ensure the server and client were on the same local network. The server and client machines were both configured to have the DNS point to the server ip.
 
 ![](images/image31.png)
 ![](images/image37.png)
