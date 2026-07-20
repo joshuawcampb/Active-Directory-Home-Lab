@@ -11,6 +11,9 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 - Practiced help desk scenarios such as disabling users, resetting passwords, unlocking accounts, changing permissions, and software deployment.
 - Performed troubleshooting using tools such as gpupdate, gpresult, ping, ipconfig, nslookup.
 
+## Setup
+Performed a setup and installation of Windows Server. This required cleaning the disk to free up space which allowed Windows Server to install
+
 ![](images/image40.png)
 ![](images/image.png)
 
