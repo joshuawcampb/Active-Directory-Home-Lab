@@ -9,7 +9,7 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 - Joined the client PC to the domain and tested domain login.
 - Created and modified Group Policies such as Password Policy and Security Policy
 - Practiced help desk scenarios such as disabling users, resetting passwords, unlocking accounts, changing permissions, logon scripts, and software deployment.
-- Performed troubleshooting using tools such as gpupdate, gpresult, ping, ipconfig, nslookup.
+- Performed troubleshooting using tools such as `gpupdate`, `gpresult`, `ping`, `ipconfig`, `nslookup`, `dcdiag`.
 
 ## Network Configuration
 
@@ -18,6 +18,9 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 | DC01 | 192.168.10.10 | Domain Controller, DNS Server |
 | WIN11-CLIENT | 192.168.10.20 | Domain-joined Windows workstation |
 
+Domain: `campbell.local`
+DNS Server: `192.168.10.10`
+
 ## Setup and Installation
 Performed a setup of VMs and installation of Windows Server and Windows 11 clients. For the server, this required cleaning the disk using diskpart to free up space which allowed Windows Server to install.
 
@@ -25,13 +28,13 @@ Performed a setup of VMs and installation of Windows Server and Windows 11 clien
 ![](images/image.png)
 
 ## Network Setup
-Configured the server and client VM network settings to enable a second adapter for an internal network. Configured the server network configuration to set the static IP address: 192.168.10.10. The client machine IP address was set to 192.168.10.20 to ensure the server and client were on the same local network. The server and client machines were both configured to have the DNS point to the server IP.
+Configured the server and client VM network settings to enable a second adapter for an internal network. Configured the server network configuration to set the static IP address: `192.168.10.10`. The client machine IP address was set to `192.168.10.20` to ensure the server and client were on the same local network. The server and client machines were both configured to have the DNS point to the server IP.
 
 ![](images/image31.png)
 ![](images/image37.png)
 
 ## Active Directory and DNS Server Setup
-Installed Active Directory Domain Services and DNS Server. Promoted the server to a domain controller and gave it the domain name: campbell.local.
+Installed Active Directory Domain Services and DNS Server. Promoted the server to a domain controller and gave it the domain name: `campbell.local`.
 
 ![](images/image39.png)
 ![](images/image2.png)
@@ -95,7 +98,7 @@ The goal was to deploy and install 7-Zip on the client machine. Created a new OU
 ![](images/image51.png)
 
 ### Logon Script
-Wrote a script to map a network drive (H:) upon user login. Configured the logon script group policy object by applying the script in the logon properties. Applied the group policy object to the HR group. Upon logging on, the user was able to see the new H: drive.
+Wrote a script to map a network drive (`H:`) upon user login. Configured the logon script group policy object by applying the script in the logon properties. Applied the group policy object to the HR group. Upon logging on, the user was able to see the new `H:` drive.
 
 ![](images/image41.png)
 ![](images/image42.png)
@@ -106,7 +109,7 @@ Wrote a script to map a network drive (H:) upon user login. Configured the logon
 Several problems were encountered throughout the project and required research to resolve the issues. Below are some scenarios of what went wrong and how the problems were resolved. These scenarios include issues with client to server connection, getting group policies objects to apply, software installation on the client machine, and getting the logon script to work.
 
 ### Client to Server Connection
-There were several times where the client machine would lose connection to the server. The first main issue was the initial connection. I had not setup a second network adapter at first, so there was no internal network setup. After researching this issue, I realized this and setup the internal network. This resolved the issue and allowed the client to connect to the machine after making sure that both the server and client DNS pointed to the server static IP address. There were times throughout the project where the client would lose connection to the server. I used dcdiag, ping, and nslookup to check the connection to the AD DC and ipconfig /flushdns to resolve this issue and sometimes just restarting the machines helped.
+There were several times where the client machine would lose connection to the server. The first main issue was the initial connection. I had not setup a second network adapter at first, so there was no internal network setup. After researching this issue, I realized this and setup the internal network. This resolved the issue and allowed the client to connect to the machine after making sure that both the server and client DNS pointed to the server static IP address. There were times throughout the project where the client would lose connection to the server. I used `dcdiag`, `ping`, and `nslookup` to check the connection to the AD DC and `ipconfig /flushdns` to resolve this issue and sometimes just restarting the machines helped.
 
 ### Group Policy Application
 There were several times where I had issues getting the group policy objects to apply. I had created a Password Policy GPO and configured and applied it. It wasn't working, and after researchig I realized I should just modify the Password Policy in the Default Domain Policy. In other instances where it didn't apply, I used gpresult and gpupdate /force to resolve the issues.
@@ -115,4 +118,4 @@ There were several times where I had issues getting the group policy objects to 
 When I was trying to deploy the 7-Zip package to the client machine, I was using the local path. After researching this issue I realized I needed to use the UNC path. I was also trying to apply the GPO to the user and realized I needed to make an OU apply it to the OU with the client machine in it.
 
 ### Logon Script Issues
-When I tried to apply the logon script to the HR group to map the H: Drive, I tried to logon to the client machine and found that it wasn't there. After doing research, I realized that needed to put the user into the HR group for it to apply to the user. The user was in the Users group still. After doing this and logging in on the client machine, I was able to see the H: drive.
+When I tried to apply the logon script to the HR group to map the H: Drive, I tried to logon to the client machine and found that it wasn't there. After doing research, I realized that needed to put the user into the HR group for it to apply to the user. The user was in the Users group still. After doing this and logging in on the client machine, I was able to see the `H:` drive.
