@@ -80,5 +80,16 @@ Messed around with disabling a user account, resetting passwords, and unlocking 
 ![](images/image32.png)
 ![](images/image33.png)
 ![](images/image34.png)
+![](images/image35.png)
+![](images/image36.png)
+
+### Software Deployment
+
+
+![](images/image46.png)
+![](images/image47.png)
+![](images/image48.png)
+![](images/image50.png)
+![](images/image51.png)
 
 
