@@ -1,5 +1,5 @@
 # Active-Directory-Home-Lab
-Built a Windows Server Active Directory environment with domain-joined Windows clients.
+This Active Directory home lab simulates a small enterprise Windows domain environment using virtual machines. The environment was built to practice common Windows Server administration, Active Directory management, Group Policy, DNS, file sharing, and troubleshooting tasks.
 
 - Downloaded Oracle VirtualBox and setup Windows Server and Windows client VM's.
 - Setup an internal network so the server and clients could communicate. 
