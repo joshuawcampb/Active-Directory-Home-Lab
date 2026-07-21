@@ -22,6 +22,22 @@ Domain: `campbell.local`
 
 DNS Server: `192.168.10.10`
 
+## Network Diagram
+
+```text
+                   Internet
+                       │
+                  Router / NAT
+                       │
+        ┌──────────────┴──────────────┐
+        │                             │
+   DC01 (Windows Server)         WIN11-CLIENT
+   192.168.10.10                 192.168.10.20
+   AD DS • DNS • GPO             Domain Joined
+
+            Domain: campbell.local
+```
+
 ## Process of Home Lab Project:
 
 ### Setup and Installation
