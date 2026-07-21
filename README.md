@@ -19,6 +19,7 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 | WIN11-CLIENT | 192.168.10.20 | Domain-joined Windows workstation |
 
 Domain: `campbell.local`
+
 DNS Server: `192.168.10.10`
 
 ## Setup and Installation
