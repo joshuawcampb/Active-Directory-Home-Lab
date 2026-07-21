@@ -1,15 +1,55 @@
 # Active-Directory-Home-Lab
+
+## Project Overview
 This Active Directory home lab simulates a small enterprise Windows domain environment using virtual machines. The environment was built to practice common Windows Server administration, Active Directory management, Group Policy, DNS, file sharing, and troubleshooting tasks.
 
-- Downloaded Oracle VirtualBox and setup Windows Server and Windows client VM's.
-- Setup an internal network so the server and clients could communicate. 
-- Setup a static IP address and had the server point the DNS to itself.
-- Installed Active Directory Domain Services and promoted the server to Domain Controller.
-- Created Organizational Units, User Accounts, and Security Groups.
-- Joined the client PC to the domain and tested domain login.
-- Created and modified Group Policies such as Password Policy and Security Policy
-- Practiced help desk scenarios such as disabling users, resetting passwords, unlocking accounts, changing permissions, logon scripts, and software deployment.
-- Performed troubleshooting using tools such as `gpupdate`, `gpresult`, `ping`, `ipconfig`, `nslookup`, `dcdiag`.
+## Active Directory Components
+
+The following Windows Server roles, features, and Active Directory components were configured during this lab:
+
+- Active Directory Domain Services (AD DS)
+- Domain Name System (DNS)
+- Group Policy Management
+- Organizational Units (OUs)
+- Security Groups
+- Domain User Accounts
+- Domain-Joined Windows 11 Client
+- Shared Network Folders
+- NTFS Permissions
+- SMB File Sharing
+- Software Deployment via Group Policy
+
+## Common Administrative Tasks Demonstrated
+
+Throughout this lab, I completed the following administrative tasks:
+
+- Installed and configured Windows Server 2022
+- Promoted a server to a Domain Controller
+- Configured Active Directory Domain Services (AD DS)
+- Configured DNS for Active Directory
+- Assigned a static IPv4 address to the Domain Controller
+- Created and managed domain users
+- Created and managed Active Directory Security Groups
+- Created Organizational Units (OUs)
+- Joined a Windows 11 client to the domain
+- Configured and managed Group Policy Objects (GPOs)
+- Implemented password and account lockout policies
+- Configured Logon Script
+- Created shared folders for department resources
+- Configured NTFS and Share permissions
+- Applied Role-Based Access Control (RBAC) using Security Groups
+- Mapped network drives with Group Policy
+- Deployed MSI software using Group Policy Software Installation
+- Verified Group Policy application using `gpresult` and `gpupdate`
+- Troubleshot Active Directory, DNS, SYSVOL, and Group Policy issues using:
+  - `gpupdate`
+  - `gpresult`
+  - `dcdiag`
+  - `nslookup`
+  - `ipconfig`
+  - `nltest`
+  - `ping`
+
 
 ## Network Configuration
 
@@ -38,7 +78,7 @@ DNS Server: `192.168.10.10`
             Domain: campbell.local
 ```
 
-## Process of Home Lab Project:
+## Implementation
 
 ### Setup and Installation
 Performed a setup of VMs and installation of Windows Server and Windows 11 clients. For the server, this required cleaning the disk using diskpart to free up space which allowed Windows Server to install.
@@ -124,17 +164,34 @@ Wrote a script to map a network drive (`H:`) upon user login. Configured the log
 ![](images/image43.png)
 ![](images/image45.png)
 
-### Problems Encountered In The Project and Troubleshooting
+## Skills Demonstrated
+
+- Active Directory Administration
+- Windows Server 2022
+- DNS Configuration and Troubleshooting
+- Group Policy Management
+- User and Group Administration
+- Organizational Unit (OU) Management
+- Domain Administration
+- Windows Client Management
+- NTFS and Share Permissions
+- File Share Administration
+- Software Deployment
+- Network Drive Mapping
+- Authentication Troubleshooting
+- Windows Command-Line Diagnostics
+
+## Troubleshooting and Lessons Learned
 Several problems were encountered throughout the project and required research to resolve the issues. Below are some scenarios of what went wrong and how the problems were resolved. These scenarios include issues with client to server connection, getting group policies objects to apply, software installation on the client machine, and getting the logon script to work.
 
-#### Client to Server Connection
-There were several times where the client machine would lose connection to the server. The first main issue was the initial connection. I had not setup a second network adapter at first, so there was no internal network setup. After researching this issue, I realized this and setup the internal network. This resolved the issue and allowed the client to connect to the machine after making sure that both the server and client DNS pointed to the server static IP address. There were times throughout the project where the client would lose connection to the server. I used `dcdiag`, `ping`, and `nslookup` to check the connection to the AD DC and `ipconfig /flushdns` to resolve this issue and sometimes just restarting the machines helped.
+### Client to Server Connection
+There were several times where the client machine would lose connection to the server. The first main issue was the initial connection. I had not setup a second network adapter at first, so there was no internal network setup. After researching this issue, I realized this and setup the internal network. This resolved the issue and allowed the client to connect to the machine after making sure that both the server and client DNS pointed to the server static IP address. There were times throughout the project where the client would lose connection to the server. I used `dcdiag`, `ping`, `nltest`, and `nslookup` to check the connection to the AD DC and `ipconfig /flushdns` to resolve this issue and sometimes just restarting the machines helped.
 
-#### Group Policy Application
+### Group Policy Application
 There were several times where I had issues getting the group policy objects to apply. I had created a Password Policy GPO and configured and applied it. It wasn't working, and after researchig I realized I should just modify the Password Policy in the Default Domain Policy. In other instances where it didn't apply, I used gpresult and gpupdate /force to resolve the issues.
 
-#### Software Installation Issues
+### Software Installation Issues
 When I was trying to deploy the 7-Zip package to the client machine, I was using the local path. After researching this issue I realized I needed to use the UNC path. I was also trying to apply the GPO to the user and realized I needed to make an OU apply it to the OU with the client machine in it.
 
-#### Logon Script Issues
+### Logon Script Issues
 When I tried to apply the logon script to the HR group to map the H: Drive, I tried to logon to the client machine and found that it wasn't there. After doing research, I realized that needed to put the user into the HR group for it to apply to the user. The user was in the Users group still. After doing this and logging in on the client machine, I was able to see the `H:` drive.
