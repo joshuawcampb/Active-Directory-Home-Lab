@@ -7,8 +7,8 @@ Built a Windows Server Active Directory environment with domain-joined Windows c
 - Installed Active Directory Domain Services and promoted the server to Domain Controller.
 - Created Organizational Units, User Accounts, and Security Groups.
 - Joined the client PC to the domain and tested domain login.
-- Created and modified Group Policies such as Password Policy, Security Policy, and logon scripts
-- Practiced help desk scenarios such as disabling users, resetting passwords, unlocking accounts, changing permissions, and software deployment.
+- Created and modified Group Policies such as Password Policy and Security Policy
+- Practiced help desk scenarios such as disabling users, resetting passwords, unlocking accounts, changing permissions, logon scripts, and software deployment.
 - Performed troubleshooting using tools such as gpupdate, gpresult, ping, ipconfig, nslookup.
 
 ## Setup and Installation
@@ -44,7 +44,7 @@ Joined the device to the local active directory network: campbell.local. Restart
 ![](images/image12.png)
 
 ## Group Policy Objects
-Opened the Group Policy Management Editor and configured group policy settings such as password policy, security policy, and logon scripts.
+Opened the Group Policy Management Editor and configured group policy settings such as password and security policies.
 
 ### Password Policy
 Setup a password policy and configured password history, age, and length requirements. 
@@ -59,37 +59,45 @@ Setup a security policy and configured the lockout restrictions.
 ![](images/image30.png)
 ![](images/image29.png)
 
-### Logon Script
-Wrote a script to map a network drive upon user login. Configured the logon script group policy object by applying the script in the logon properties. Applied the group policy object to the HR group.
-
-![](images/image41.png)
-![](images/image42.png)
-![](images/image43.png)
-![](images/image45.png)
-
-## Help Desk Scenarios and Troubleshooting
+## Help Desk Scenarios
 Practiced help desk scenarios to simulate actual problems and tasks. This helped to strengthen understanding concepts and routines that may be seen in the work place. Troubleshot user accounts, permissions, software installation, and other issues encountered throughout the project.
 
-### User Account Troubleshooting
-Messed around with disabling a user account, resetting passwords, and unlocking a user account.
+### User Account Management
+Messed around with disabling a user account, resetting passwords, and unlocking a user account. Tested the results on the client machine.
 
 ![](images/image19.png)
 
-### NTFS Permissions
+### NTFS Permissions Management
+Messed around with permissions. Gave modify, read, and execute permissions to the HR group to access a folder. Tested access to the folder on the client machine. Also tested that modifying works by created a folder within that folder. Removed user from the group to test access to the folder without permissions and received an error message of not being able to access the folder. 
 
 ![](images/image32.png)
 ![](images/image33.png)
 ![](images/image34.png)
 ![](images/image35.png)
+![](images/image38.png)
 ![](images/image36.png)
 
-### Software Deployment
-
+### Software Installation
+The goal was to deploy and install 7-Zip on the client machine. Created a new OU called Workstations and added the Windows client machine to it. Downloaded the 7-Zip package file. Created a GPO called Deploy 7-Zip, modified the Software Installation, and added the 7-zip package file to it. Linked the GPO to the Workstations OU and forced a group policy update. Upon restarting the client machine, on startup 7-Zip was installed and could be found in the client machine's files.
 
 ![](images/image46.png)
 ![](images/image47.png)
 ![](images/image48.png)
 ![](images/image50.png)
 ![](images/image51.png)
+
+### Logon Script
+Wrote a script to map a network drive (H:) upon user login. Configured the logon script group policy object by applying the script in the logon properties. Applied the group policy object to the HR group. Upon logging on, the user was able to see the new H drive.
+
+![](images/image41.png)
+![](images/image42.png)
+![](images/image43.png)
+![](images/image45.png)
+
+## Problems Encountered In The Project and Troubleshooting
+Several problems were encountered throughout the project and required research to resolve the issues. Below are some scenarios of what went wrong and how the problems were resolved. These scenarios include issues with client to server connection, getting group policies objects to apply, and software installation on client machine.
+
+### Client to Server Connection
+There were several times where the client machine would lose connection to the server. The first main issue was the initial connection. I had not setup a second network adapter at first, so there was no internal network setup.
 
 
